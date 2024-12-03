@@ -87,35 +87,36 @@ VALUES
 (10, 'Project Kappa', '2024-08-20', 'open', NULL);
 
 
---insert data into EmployeeRoles table
+-- insert data into EmployeeRoles table
 INSERT INTO EmployeeRoles (employee_id, project_id, employee_role)
 VALUES 
-(NULL, 1, 'Lead Developer'),
-(1, 1, 'Project Manager'),
-(NULL, 2, 'Tester'),
-(3, 2, 'Developer'),
-(2, 2, 'Designer'),
-(6, 6, 'Business Analyst'),
-(NULL, 7, 'Software Engineer'),
-(8, 8, 'System Architect'),
-(9, 9, 'Quality Engineer'),
-(10, 10, 'Product Manager');
-
+(1, 1, 'Lead Developer'),         
+(1, 2, 'Project Manager'),        
+(3, 2, 'Tester'),                 
+(4, 2, 'Developer'),              
+(2, 3, 'Designer'),               
+(6, 4, 'Business Analyst'),       
+(7, 5, 'Software Engineer'),      
+(8, 6, 'System Architect'),       
+(9, 7, 'Quality Engineer'),       
+(10, 8, 'Product Manager'),       
+(1, 9, 'Consultant'),             
+(2, 10, 'Advisor');               
 
 
 --insert data into Tasks table
 INSERT INTO Tasks (task_id, task_name, project_id, assigned_to, status, deadline)
 VALUES 
-(1, 'Database Design', 1, 1, 'open', '2024-02-15'),
-(2, 'Requirement Analysis', 1, 2, 'done', '2024-01-25'),
-(3, 'UI Design', 2, 5, 'need work', '2024-03-10'),
-(4, 'Backend API Development', 2, 4, 'open', '2024-03-30'),
-(5, 'Testing', 1, 3, 'accepted', '2024-01-20'),
-(6, 'Business Requirements Gathering', 6, 6, 'done', '2024-07-01'),
+(1, 'Database Design', 1, 1, 'open', '2025-02-15'),
+(2, 'Requirement Analysis', 1, 2, 'done', '2025-01-25'),
+(3, 'UI Design', 2, 5, 'need work', '2024-12-10'),
+(4, 'Backend API Development', 2, 4, 'open', '2024-12-30'),
+(5, 'Testing', 1, 3, 'accepted', '2024-11-20'),
+(6, 'Business Requirements Gathering', 6, 6, 'done', '2024-10-01'),
 (7, 'Backend Service Development', 7, 7, 'open', '2024-08-01'),
-(8, 'Architecture Review', 8, 8, 'accepted', '2024-08-10'),
-(9, 'Testing Framework Setup', 9, 9, 'need work', '2024-09-01'),
-(10, 'Feature Planning', 10, 10, 'open', '2024-09-10');
+(8, 'Architecture Review', 8, 8, 'accepted', '2024-11-10'),
+(9, 'Testing Framework Setup', 9, 9, 'need work', '2024-12-01'),
+(10, 'Feature Planning', 10, 10, 'open', '2025-09-10');
 
 
 
