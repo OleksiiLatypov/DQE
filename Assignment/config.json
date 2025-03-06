@@ -1,0 +1,15 @@
+
+{
+    "database": {
+      "name": "mydatabase",
+      "user": "myuser",
+      "password": "mypassword",
+      "host": "localhost",
+      "port": 5432
+    },
+    "file_paths": {
+      "input_excel": "students.xlsx",
+      "output_csv": "cleaned_students.csv"
+    }
+}
+  
