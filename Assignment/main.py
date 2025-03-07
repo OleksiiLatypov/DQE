@@ -92,14 +92,13 @@ def count_students():
     """
     cursor.execute(query)
     count_result = cursor.fetchall()
-    print(count_result)
     df = pd.DataFrame(count_result, columns=['gender', 'count'])
     conn.close()
     
     print("\nStudents with average mark > 5:")
     print(df)
-    
-    #return df
+    return df
+
 
 if __name__ == "__main__":
     create_students_table()
