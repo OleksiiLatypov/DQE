@@ -13,14 +13,18 @@ FILE_PATHS = config["file_paths"]
 
 #Connect to PostgreSQL
 def get_db_connection():
-    connection_to_db = psycopg2.connect(
-        dbname=DB_CONFIG["name"],
-        user=DB_CONFIG["user"],
-        password=DB_CONFIG["password"],
-        host=DB_CONFIG["host"],
-        port=DB_CONFIG["port"]
-    )
-    return connection_to_db
+    try:
+        connection_to_db = psycopg2.connect(
+            dbname=DB_CONFIG["name"],
+            user=DB_CONFIG["user"],
+            password=DB_CONFIG["password"],
+            host=DB_CONFIG["host"],
+            port=DB_CONFIG["port"]
+        )
+        return connection_to_db
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        return None
 
 # Step 1: Create 'students' table in your PosrgreSQL database in python script. It must have id which is PK and auto incremented.
 def create_students_table():
@@ -65,19 +69,22 @@ def process_students_data():
 
 # Step 5: Insert data into the 'students' table in your DB.
 def insert_students_data(df):
-    conn =  get_db_connection()
+    conn = get_db_connection()
     cursor = conn.cursor()
-    
-    for _, row in df.iterrows():
-        cursor.execute("""
-            INSERT INTO students (student_name, first_name, last_name, gender, average_mark, phonenumber) 
-            VALUES (%s, %s, %s, %s, %s, %s);
-        """, (row["student name"], row["first name"], row["second name"], row["gender"], row["average mark"], row["phone number"]))
-    
-    conn.commit()
-    cursor.close()
-    conn.close()
-    print("Data inserted into 'students' table.")
+    try:
+        for _, row in df.iterrows():
+            cursor.execute("""
+                INSERT INTO students (student_name, first_name, last_name, gender, average_mark, phonenumber)
+                VALUES (%s, %s, %s, %s, %s, %s);
+            """, (row["student name"], row["first name"], row["second name"], row["gender"], row["average mark"], row["phone number"]))
+        conn.commit()
+        print("Data inserted into 'students' table.")
+    except psycopg2.Error as e:
+        conn.rollback()
+        print(f"Error during insertion: {e}")
+    finally:
+        cursor.close()
+        conn.close()
 
 # Step 6:  Count number of male students with 'average mark' > 5 and female students with 'average mark' > 5 and select this data from DB.
 # Write this data into DataFrame data type variable and print it.
