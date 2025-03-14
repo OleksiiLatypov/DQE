@@ -1,15 +1,15 @@
 
 {
     "database": {
-      "name": "mydatabase",
-      "user": "myuser",
-      "password": "mypassword",
+      "db_name": "assignment",
+      "user": "postgres_user",
+      "password": "postgres",
       "host": "localhost",
       "port": 5432
     },
     "file_paths": {
       "input_excel": "students.xlsx",
-      "output_csv": "cleaned_students.csv"
+      "output_csv": "transformed_students.csv"
     }
 }
   
