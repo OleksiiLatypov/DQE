@@ -1,0 +1,1 @@
+awk 'FNR==1 { next } FNR==NR { a[$1]; next } $1 in a { c++ } END { print c }' namesakes_preparation sample_cut.txt >> namesakes_preparation

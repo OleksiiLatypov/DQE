@@ -1,0 +1,1 @@
+awk 'FNR==NR{a[$1]; next} $1 in a && $3 != "Marketing" {print $1}' marketing_$(date -d "yesterday" +%F).txt sample_cut.txt > namesakes_preparation
