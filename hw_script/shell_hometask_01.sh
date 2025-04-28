@@ -31,14 +31,14 @@ awk -F, 'BEGIN {OFS=","}
         year = substr($1, 1, 4)
         
         # Filter for years 2010-2014
-        if (year >= 2010 && year <= 2014) {
+        #if (year >= 2010 && year <= 2014) {
             # Handle missing data in "Temperature" or "Year"
             if ($2 != "" && $1 != "" && $4 != "") {
                 # Replace missing country with "unknown"
-                country = ($4 == "") ? "unknown" : $4
+                country = ($4 == "" || $4 == "NaN") ? "unknown" : $4
                 # Print the relevant fields: Country, Year, Temperature
                 print country, year, $2
-            }
+        #    }
         }
     }
 ' "$input_file" >> temperature.csv
